@@ -39,9 +39,17 @@ export default function Settings() {
     updateSettings({ degreeVariance: roundedValue })
   }
 
+  // Update the handleTargetAngleChange function to clamp values between 1 and 179
   const handleTargetAngleChange = (index: number, value: string) => {
     const newAngles = [...localTargetAngles]
-    newAngles[index] = value
+    // Ensure the value is within 1-179 range
+    const numValue = Number(value)
+    if (!isNaN(numValue)) {
+      const clampedValue = Math.min(179, Math.max(1, numValue))
+      newAngles[index] = clampedValue.toString()
+    } else {
+      newAngles[index] = value
+    }
     setLocalTargetAngles(newAngles)
   }
 
@@ -79,9 +87,12 @@ export default function Settings() {
                 id={`targetAngle-${index}`}
                 type="number"
                 value={angle}
-                onChange={(e) => handleTargetAngleChange(index, e.target.value)}
-                min={0}
-                max={359}
+                onChange={(e) => {
+                  const value = Math.min(179, Math.max(1, Number(e.target.value) || 1))
+                  handleTargetAngleChange(index, value.toString())
+                }}
+                min={1}
+                max={179}
                 className="text-xl py-2 px-3"
               />
               <span className="text-lg">degrees</span>
