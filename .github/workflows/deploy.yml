@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
           echo "Starting build process..."
-          npm run build
+          npm run build --verbose
           echo "Build process completed."
           echo "Contents of current directory:"
           ls -la
