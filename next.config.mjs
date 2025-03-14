@@ -10,7 +10,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/DementiaTest_Mar24', 
+  basePath: '/DementiaTestMar24', 
   
   distDir: 'out',
 }
