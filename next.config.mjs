@@ -10,8 +10,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/DementiaTest_Feb25', // Replace with your repository name if different
-  // Explicitly set the output directory to 'out'
+  basePath: '/DementiaTest_Mar24', 
+  
   distDir: 'out',
 }
 
